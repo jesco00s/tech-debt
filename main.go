@@ -1,7 +1,7 @@
 package main
 
 import (
-	"TechDebt/Items"
+	items "TechDebt/Items"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -17,7 +17,7 @@ func itemsHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func addItem(w http.ResponseWriter, r *http.Request) {
-	var newItem Items.Item
+	var newItem items.Item
 	err := json.NewDecoder(r.Body).Decode(&newItem)
 	if err != nil {
 		http.Error(w, "Invalid input", http.StatusBadRequest)

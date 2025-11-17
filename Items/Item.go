@@ -1,4 +1,4 @@
-package Items
+package items
 
 type Item struct {
 	ResourceName string `json:"resourceName"`
