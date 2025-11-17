@@ -7,7 +7,7 @@ import (
 )
 
 func AddItem(w http.ResponseWriter, r *http.Request) {
-	var newItem items.Item
+	var newItem Item
 	err := json.NewDecoder(r.Body).Decode(&newItem)
 	if err != nil {
 		http.Error(w, "Invalid input", http.StatusBadRequest)
