@@ -1,16 +1,12 @@
 package main
 
 import (
+	"TechDebt/Items"
 	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 )
-
-type Item struct {
-	ResourceName string `json:"resourceName"`
-	TechDebtId   string `json:"techDebtId"`
-}
 
 func itemsHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
@@ -21,7 +17,7 @@ func itemsHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func addItem(w http.ResponseWriter, r *http.Request) {
-	var newItem Item
+	var newItem Items.Item
 	err := json.NewDecoder(r.Body).Decode(&newItem)
 	if err != nil {
 		http.Error(w, "Invalid input", http.StatusBadRequest)
