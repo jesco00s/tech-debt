@@ -1,8 +1,7 @@
 package main
 
 import (
-	items "TechDebt/Items"
-	"encoding/json"
+	"TechDebt/items"
 	"fmt"
 	"log"
 	"net/http"
@@ -10,20 +9,10 @@ import (
 
 func itemsHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		addItem(w, r)
+		items.AddItem(w, r)
 	} else {
 		http.Error(w, "Unsupported method", http.StatusMethodNotAllowed)
 	}
-}
-
-func addItem(w http.ResponseWriter, r *http.Request) {
-	var newItem items.Item
-	err := json.NewDecoder(r.Body).Decode(&newItem)
-	if err != nil {
-		http.Error(w, "Invalid input", http.StatusBadRequest)
-		return
-	}
-	fmt.Println(newItem)
 }
 
 func main() {
