@@ -1,10 +1,11 @@
 package main
 
 import (
-	"TechDebt/items"
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/jesco00s/tech-debt/items"
 )
 
 func itemsHandler(w http.ResponseWriter, r *http.Request) {
