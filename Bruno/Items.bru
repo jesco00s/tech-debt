@@ -1,0 +1,23 @@
+meta {
+  name: Items
+  type: http
+  seq: 1
+}
+
+post {
+  url: http:localhost:8080/items
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "resourceName": "ad1",
+    "techDebtId": "1"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
