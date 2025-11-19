@@ -1,0 +1,20 @@
+meta {
+  name: Resources Get
+  type: http
+  seq: 3
+}
+
+post {
+  url: http:localhost:8080/resources/get
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
