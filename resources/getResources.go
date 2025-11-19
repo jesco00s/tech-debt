@@ -10,7 +10,15 @@ import (
 	_ "github.com/lib/pq"
 )
 
-func GetResources(w http.ResponseWriter, r *http.Request) {
+func ResourcesHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		GetResources(w)
+	} else {
+		http.Error(w, "Unsupported method", http.StatusMethodNotAllowed)
+	}
+}
+
+func GetResources(w http.ResponseWriter) {
 
 	//todo need to separate this into its own function. Do not like this but it is ok for now
 	connStr := "user=postgres dbname=josejescobar host=localhost sslmode=disable"
