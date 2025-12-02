@@ -2,9 +2,11 @@ package resources
 
 import (
 	"encoding/json"
+	"fmt"
 
 	"net/http"
 
+	"github.com/jesco00s/tech-debt/constants"
 	"github.com/jesco00s/tech-debt/db"
 	_ "github.com/lib/pq"
 )
@@ -21,7 +23,7 @@ func getResources(w http.ResponseWriter) {
 	dbConn := db.GetDbConnection()
 	defer dbConn.Close()
 
-	const selectResourceQuery = "SELECT ar.resource_id, ar.resource_name, ar.os , ar.application_id, ar.product_id FROM public.all_resources ar "
+	selectResourceQuery := fmt.Sprintf("SELECT ar.resource_id, ar.resource_name, ar.os , ar.application_id, ar.product_id FROM %s ar", constants.All_Resources_Table_Name)
 	rows, err := dbConn.Query(selectResourceQuery)
 	if err != nil {
 		http.Error(w, "Error getting resources", http.StatusInternalServerError)
@@ -43,5 +45,4 @@ func getResources(w http.ResponseWriter) {
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(resources)
-
 }
