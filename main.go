@@ -15,10 +15,12 @@ func main() {
 
 	http.HandleFunc(resourcesPath, resources.ResourcesHandler)
 
+	fmt.Printf("Server starting (%s)\n", port)
+	fmt.Println("Routes:")
 	for i := range routes {
-		fmt.Println(routes[i])
+		fmt.Printf("\t %s \n", routes[i])
 	}
 
-	fmt.Println("Server is running on port", port)
+	fmt.Println("Ready")
 	log.Fatal(http.ListenAndServe(port, nil))
 }
