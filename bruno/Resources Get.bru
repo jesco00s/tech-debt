@@ -20,7 +20,11 @@ tests {
   });
   
   test("should respond in timely manner", function () {
-    expect(res.getResponseTime()).to.be.lessThan(3000)
+    expect(res.getResponseTime()).to.be.lessThan(3000);
+  });
+  
+  test("response body should not be empty", function () {
+    expect(res.getBody()).not.to.be.empty
   });
 }
 
