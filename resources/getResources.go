@@ -21,7 +21,7 @@ func getResources(w http.ResponseWriter) {
 	dbConn := db.GetDbConnection()
 	defer dbConn.Close()
 
-	const selectResourceQuery = "Select ar.resource_id, ar.resource_name, ar.os , ar.application_id, ar.product_id from public.all_resources ar "
+	const selectResourceQuery = "SELECT ar.resource_id, ar.resource_name, ar.os , ar.application_id, ar.product_id FROM public.all_resources ar "
 	rows, err := dbConn.Query(selectResourceQuery)
 	if err != nil {
 		http.Error(w, "Error getting resources", http.StatusInternalServerError)

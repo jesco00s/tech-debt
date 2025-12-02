@@ -9,11 +9,11 @@ import (
 )
 
 func main() {
-	const resources_path = "/resources/get"
-	var routes = []string{resources_path}
+	const resourcesPath = "/resources/get"
+	var routes = []string{resourcesPath}
 	port := ":8080"
 
-	http.HandleFunc(resources_path, resources.ResourcesHandler)
+	http.HandleFunc(resourcesPath, resources.ResourcesHandler)
 
 	for i := range routes {
 		fmt.Println(routes[i])
