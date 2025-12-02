@@ -5,13 +5,23 @@ meta {
 }
 
 post {
-  url: http:localhost:8080/resources/get
+  url: {{HOST_URL}}/resources/get
   body: none
   auth: inherit
 }
 
 body:json {
   {}
+}
+
+tests {
+  test("should return 200", function () {
+    expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("should respond in timely manner", function () {
+    expect(res.getResponseTime()).to.be.lessThan(3000)
+  });
 }
 
 settings {
