@@ -9,3 +9,5 @@ To do
 - unify the response body. Should not be an array without the value
 - add application yml file that has the table names
 - add a secret yml file that has the database config
+- fix the tempCodeRunnerFile
+- split the getREsources into a handler file
